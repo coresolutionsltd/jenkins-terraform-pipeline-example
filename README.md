@@ -14,10 +14,14 @@ The Jenkins pipeline used in this repo composes of various stages used to initia
 - Terraform 12 installed and working
 
 ## Setup
-- In order to make config changes you'll first need to fork this repo, then complete the following:     
-- Update the [BACKEND_BUCKET](https://github.com/coresolutions-ltd/jenkins-terraform-pipeline/blob/master/Jenkinsfile#L8) value with the correct value for your environment
-- Create a new Jenkins pipeline using the location of your forked repo   
-- Create a DynamoDB table for state locking defined as **terraform-state-lock**
+In order to make config changes you'll first need to fork this repo, then complete the following:     
+        
+- Update the [BACKEND_BUCKET](https://github.com/coresolutions-ltd/jenkins-terraform-pipeline/blob/master/Jenkinsfile#L8) value with the correct value for your environment       
+         
+- Create a new Jenkins pipeline using the location of your forked repo       
+           
+- Create a DynamoDB table for state locking defined as **terraform-state-lock**        
+
 >You can use the *Terraform/Setup* configuration to create a test S3 backend bucket / Dynamo table if needed, if you'd prefer to use existing infrastructure just update the values in the [Jenkinsfile](https://github.com/coresolutions-ltd/jenkins-terraform-pipeline/blob/master/Jenkinsfile#L8) & [terraform.tf](https://github.com/coresolutions-ltd/jenkins-terraform-pipeline/blob/master/Terraform/Demo/terraform.tf#L4) accordingly
 
 ## Usage

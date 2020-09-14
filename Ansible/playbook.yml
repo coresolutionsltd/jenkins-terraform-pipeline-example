@@ -1,0 +1,6 @@
+---
+- name: Demo
+  hosts: localhost
+  tasks:
+    - include_role:
+        name: nginx

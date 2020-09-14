@@ -1,21 +1,26 @@
 pipeline {
     agent any
-    
+
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         AWS_DEFAULT_REGION    = "eu-west-1"
-        BACKEND_BUCKET        = "corebucket-668785795"
+        BACKEND_BUCKET        = "jenkins-terraform-pipeline-state"
     }
-    
+
     parameters {
         choice(
             name: 'Action',
             choices: ['Build', 'Destroy'],
             description: 'The action to take'
         )
+        choice(
+            name: 'Colour',
+            choices: ['Blue', 'Green'],
+            description: 'The environment to use'
+        )
     }
-    
+
     stages {
         stage('Init') {
             steps {
@@ -38,17 +43,18 @@ pipeline {
             }
         }
     }
-    post { 
-        always { 
-            deleteDir()
-        }
-    }
+    // post {
+    //     always {
+    //         deleteDir()
+    //     }
+    // }
 }
 
 def terraformInit() {
     sh("""
         cd Terraform/Demo;
-        terraform init -backend-config="bucket=${env.BACKEND_BUCKET}"
+        terraform init -backend-config="bucket=${env.BACKEND_BUCKET}" -backend-config="key=demo.tfstate"
+        terraform workspace select ${params.Colour.toLowerCase()} || terraform workspace new ${params.Colour.toLowerCase()}
     """)
 }
 
@@ -62,7 +68,7 @@ def terraformPlan() {
 
     sh("""
         cd Terraform/Demo;
-        terraform plan ${env.DESTROY} -no-color -out=tfout
+        terraform plan ${env.DESTROY} -var-file=${params.Colour.toLowerCase()}.tfvars -no-color -out=tfout
     """)
 }
 

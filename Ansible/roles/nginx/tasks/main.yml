@@ -1,0 +1,18 @@
+---
+- name: Include variables for the relevant environment
+  include_vars: "{{ colour }}.yml"
+
+- name: Install nginx
+  command: amazon-linux-extras install nginx1=latest -y
+  args:
+    creates: /sbin/nginx
+
+- name: Template index.html
+  template:
+    src: index.html.j2
+    dest: /usr/share/nginx/html/index.html
+
+- name: Start nginx
+  service:
+    name: nginx
+    state: started

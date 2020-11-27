@@ -82,6 +82,8 @@ def terraformApply() {
     sh("""
         cd Terraform/Demo;
         terraform apply tfout -no-color
+
+        mkdir ../../Inspec/files/
         terraform output --json > ../../Inspec/files/output.json
     """)
 }

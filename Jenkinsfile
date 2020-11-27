@@ -42,9 +42,15 @@ pipeline {
                 terraformApply()
             }
         }
+        stage('Validate') {
+            steps {
+                inspecValidation()
+            }
+        }
     }
     post {
         always {
+            echo 'Deleting Directory!'
             deleteDir()
         }
     }

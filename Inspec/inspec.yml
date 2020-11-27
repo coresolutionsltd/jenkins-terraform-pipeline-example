@@ -1,5 +1,5 @@
 name: terraform-pipeline
-title: Basic Terraform Testing
+title: Application Infrastructure Testing
 maintainer: Core Solutions LTD
 summary: Verify terraform configuration
 version: 1.0.0

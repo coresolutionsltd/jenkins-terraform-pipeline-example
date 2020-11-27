@@ -1,5 +1,6 @@
 module "asg" {
-  source = "coresolutions-ltd/asg/aws"
+  source  = "coresolutions-ltd/asg/aws"
+  version = "1.0.6"
 
   name             = "${title(terraform.workspace)}-Demo"
   min_size         = 1

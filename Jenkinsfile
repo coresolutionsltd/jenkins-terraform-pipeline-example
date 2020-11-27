@@ -43,11 +43,11 @@ pipeline {
             }
         }
     }
-    // post {
-    //     always {
-    //         deleteDir()
-    //     }
-    // }
+    post {
+        always {
+            deleteDir()
+        }
+    }
 }
 
 def terraformInit() {
@@ -76,5 +76,12 @@ def terraformApply() {
     sh("""
         cd Terraform/Demo;
         terraform apply tfout -no-color
+        terraform output --json > ../../Inspec/files/output.json
+    """)
+}
+
+def inspecValidation() {
+    sh("""
+        inspec exec Inspec/ -t aws:// --input workspace=${params.Colour}
     """)
 }

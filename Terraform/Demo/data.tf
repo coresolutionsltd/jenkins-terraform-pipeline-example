@@ -30,7 +30,6 @@ data "aws_subnet_ids" "public" {
   }
 }
 
-
 data "template_file" "user_data" {
   template = file("user_data.tpl")
   vars = {

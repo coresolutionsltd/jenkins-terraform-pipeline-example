@@ -1,9 +1,9 @@
-[![alt text](https://coresolutions.ltd/media/core-solutions-82.png "Core Solutions")](https://coresolutions.ltd)
-
 [![maintained by Core Solutions](https://img.shields.io/badge/maintained%20by-coresolutions.ltd-00607c.svg)](https://coresolutions.ltd)
 [![GitHub tag](https://img.shields.io/github/v/tag/coresolutions-ltd/jenkins-terraform-pipeline.svg?label=latest)](https://github.com/coresolutions-ltd/jenkins-terraform-pipeline/releases)
 [![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12-623ce4.svg)](https://github.com/hashicorp/terraform/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+
+> ⚠️ **Warning:** This repository is outdated, and no longer maintained. While the configurations and pipeline provided may still be functional and of use to some, they are provided as-is. Use at your own discretion.
 
 # Jenkins Terraform Pipeline Example
 
